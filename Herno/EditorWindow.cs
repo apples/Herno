@@ -1,44 +1,23 @@
-﻿using HernoEditor.ImGui;
-using ImGuiNET;
-using SharpDX;
-using SharpDX.D3DCompiler;
-using SharpDX.Direct3D;
-using SharpDX.DXGI;
-using SharpDX.Windows;
-using System;
-using System.Drawing;
+﻿using System;
 using System.Linq;
-using System.Reflection;
-using D3D11 = SharpDX.Direct3D11;
+using System.Numerics;
+using ImGuiNET;
+using Veldrid;
+using Veldrid.Sdl2;
+using Veldrid.StartupUtilities;
+using static ImGuiNET.ImGuiNative;
 
 namespace HernoEditor
 {
     class EditorWindow : IDisposable
     {
-        private RenderForm renderForm;
-
-        private const int Width = 1280;
-        private const int Height = 720;
-
-        private D3D11.Device device;
-        private D3D11.DeviceContext context;
-        private SwapChain swapChain;
-        private D3D11.RenderTargetView renderTargetView;
-        private Viewport viewport;
-
-        // Shaders
-        private D3D11.VertexShader vertexShader;
-        private D3D11.PixelShader pixelShader;
-        private ShaderSignature inputSignature;
-        private D3D11.InputLayout inputLayout;
-        private D3D11.InputElement[] inputElements = new D3D11.InputElement[] { new D3D11.InputElement("POSITION", 0, Format.R32G32B32_Float, 0) };
-        
-        // Triangle vertices
-        private Vector3[] vertices = new Vector3[] { new Vector3(-0.5f, -0.5f, 0.0f), new Vector3(0.0f, 0.5f, 0.0f), new Vector3(0.5f, -0.5f, 0.0f) };
-        private D3D11.Buffer triangleVertexBuffer;
+        private static Sdl2Window _window;
+        private static GraphicsDevice _gd;
+        private static CommandList _cl;
+        private static ImGuiController _controller;
+        private static MemoryEditor _memoryEditor;
 
         // UI state
-        private static ImGuiController _controller;
         private static float _f = 0.0f;
         private static int _counter = 0;
         private static int _dragInt = 0;
@@ -46,8 +25,10 @@ namespace HernoEditor
         private static bool _showImGuiDemoWindow = true;
         private static bool _showAnotherWindow = false;
         private static bool _showMemoryEditor = false;
+        private static byte[] _memoryEditorData;
         private static uint s_tab_bar_flags = (uint)ImGuiTabBarFlags.Reorderable;
         static bool[] s_opened = { true, true, true, true }; // Persistent user state
+
         static void SetThing(out float i, float val) { i = val; }
 
         /// <summary>
@@ -55,15 +36,22 @@ namespace HernoEditor
 		/// </summary>
         public EditorWindow()
         {
-            renderForm = new RenderForm("Herno Editor™");
-            renderForm.ClientSize = new Size(Width, Height);
-            renderForm.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
-            renderForm.AllowUserResizing = false;
-            renderForm.WindowState = System.Windows.Forms.FormWindowState.Normal;
-            
-            InitializeDeviceResources();
-            InitializeShaders();
-            InitializeTriangle();
+            // Create window, GraphicsDevice, and all resources necessary for the demo.
+            VeldridStartup.CreateWindowAndGraphicsDevice(
+                new WindowCreateInfo(50, 50, 1280, 720, WindowState.Normal, "ImGui.NET Sample Program"),
+                new GraphicsDeviceOptions(true, null, true, ResourceBindingModel.Improved, true, true),
+                out _window,
+                out _gd);
+            _window.Resized += () =>
+            {
+                _gd.MainSwapchain.Resize((uint)_window.Width, (uint)_window.Height);
+                _controller.WindowResized(_window.Width, _window.Height);
+            };
+            _cl = _gd.ResourceFactory.CreateCommandList();
+            _controller = new ImGuiController(_gd, _gd.MainSwapchain.Framebuffer.OutputDescription, _window.Width, _window.Height);
+            _memoryEditor = new MemoryEditor();
+            Random random = new Random();
+            _memoryEditorData = Enumerable.Range(0, 1024).Select(i => (byte)random.Next(255)).ToArray();
         }
 
         /// <summary>
@@ -71,109 +59,26 @@ namespace HernoEditor
 		/// </summary>
         public void Run()
         {
-            RenderLoop.Run(renderForm, RenderCallback);
-        }
-
-        private void RenderCallback()
-        {
-            Draw();
-        }
-
-        private void InitializeShaders()
-        {
-            // Compile the vertex shader code
-            using (var vertexShaderByteCode = ShaderBytecode.CompileFromFile("Resources/Shaders/DefaultShader.shader", "vertex", "vs_4_0", ShaderFlags.Debug))
+            while (_window.Exists)
             {
-                // Read input signature from shader code
-                inputSignature = ShaderSignature.GetInputSignature(vertexShaderByteCode);
-                vertexShader = new D3D11.VertexShader(device, vertexShaderByteCode);
-            }
-            // Compile the pixel shader code
-            using (var pixelShaderByteCode = ShaderBytecode.CompileFromFile("Resources/Shaders/DefaultShader.shader", "pixel", "ps_4_0", ShaderFlags.Debug))
-            {
-                pixelShader = new D3D11.PixelShader(device, pixelShaderByteCode);
-            }
+                InputSnapshot snapshot = _window.PumpEvents();
+                if (!_window.Exists) { break; }
+                _controller.Update(1f / 60f, snapshot); // Feed the input events to our ImGui controller, which passes them through to ImGui.
 
-            // Set as current vertex and pixel shaders
-            context.VertexShader.Set(vertexShader);
-            context.PixelShader.Set(pixelShader);
+                SubmitUI();
 
-            context.InputAssembler.PrimitiveTopology = PrimitiveTopology.TriangleList;
-
-            // Create the input layout from the input signature and the input elements
-            inputLayout = new D3D11.InputLayout(device, inputSignature, inputElements);
-
-            // Set input layout to use
-            context.InputAssembler.InputLayout = inputLayout;
-        }
-
-        private void InitializeDeviceResources()
-        {
-            ModeDescription backBufferDesc = new ModeDescription(Width, Height, new Rational(60, 1), Format.R8G8B8A8_UNorm);
-
-            // Descriptor for the swap chain
-            SwapChainDescription swapChainDesc = new SwapChainDescription()
-            {
-                ModeDescription = backBufferDesc,
-                SampleDescription = new SampleDescription(1, 0),
-                Usage = Usage.RenderTargetOutput,
-                BufferCount = 1,
-                OutputHandle = renderForm.Handle,
-                IsWindowed = true
-            };
-
-            // Create device and swap chain
-            D3D11.Device.CreateWithSwapChain(DriverType.Hardware, D3D11.DeviceCreationFlags.None, swapChainDesc, out device, out swapChain);
-            context = device.ImmediateContext;
-
-            viewport = new Viewport(0, 0, Width, Height);
-            context.Rasterizer.SetViewport(viewport);
-
-            // Create render target view for back buffer
-            using (D3D11.Texture2D backBuffer = swapChain.GetBackBuffer<D3D11.Texture2D>(0))
-            {
-                renderTargetView = new D3D11.RenderTargetView(device, backBuffer);
+                _cl.Begin();
+                _cl.SetFramebuffer(_gd.MainSwapchain.Framebuffer);
+                _cl.ClearColorTarget(0, new RgbaFloat(_clearColor.X, _clearColor.Y, _clearColor.Z, 1f));
+                _controller.Render(_gd, _cl);
+                _cl.End();
+                _gd.SubmitCommands(_cl);
+                _gd.SwapBuffers(_gd.MainSwapchain);
             }
         }
-        
-        private void InitializeTriangle()
+
+        private static unsafe void SubmitUI()
         {
-            // Create a vertex buffer, and use our array with vertices as data
-            triangleVertexBuffer = D3D11.Buffer.Create(device, D3D11.BindFlags.VertexBuffer, vertices);
-        }
-
-        /// <summary>
-		/// Draw the game.
-		/// </summary>
-		private void Draw()
-        {
-            // Set back buffer as current render target view
-            context.OutputMerger.SetRenderTargets(renderTargetView);
-
-            // Clear the screen
-            context.ClearRenderTargetView(renderTargetView, new SharpDX.Color(40, 40, 40));
-
-            DrawImGui();
-
-            // Set vertex buffer
-            context.InputAssembler.SetVertexBuffers(0, new D3D11.VertexBufferBinding(triangleVertexBuffer, Utilities.SizeOf<Vector3>(), 0));
-            // Draw the triangle
-            context.Draw(vertices.Count(), 0);
-
-            // Swap front and back buffer
-            swapChain.Present(1, PresentFlags.None);
-        }
-
-        private void DrawImGui()
-        {
-            renderForm.Resize += (a, b) =>
-            {
-                swapChain.ResizeBuffers(0, (int)renderForm.Width, (int)renderForm.Height, Format.R8G8B8A8_UNorm, SwapChainFlags.None);
-                _controller.WindowResized(renderForm.Width, renderForm.Height);
-            };
-
-
-
             // Demo code adapted from the official Dear ImGui demo program:
             // https://github.com/ocornut/imgui/blob/master/examples/example_win32_directx11/main.cpp#L172
 
@@ -215,7 +120,7 @@ namespace HernoEditor
             {
                 // Normally user code doesn't need/want to call this because positions are saved in .ini file anyway.
                 // Here we just want to make the demo initial state a bit more friendly!
-                ImGui.SetNextWindowPos(new System.Numerics.Vector2(650, 20), ImGuiCond.FirstUseEver);
+                ImGui.SetNextWindowPos(new Vector2(650, 20), ImGuiCond.FirstUseEver);
                 ImGui.ShowDemoWindow(ref _showImGuiDemoWindow);
             }
 
@@ -290,18 +195,23 @@ namespace HernoEditor
 
             ImGuiIOPtr io = ImGui.GetIO();
             SetThing(out io.DeltaTime, 2f);
+
+            if (_showMemoryEditor)
+            {
+                _memoryEditor.Draw("Memory Editor", _memoryEditorData, _memoryEditorData.Length);
+            }
         }
+   
 
         public void Dispose()
         {
-            triangleVertexBuffer.Dispose();
-            vertexShader.Dispose();
-            pixelShader.Dispose();
-            renderTargetView.Dispose();
-            swapChain.Dispose();
-            device.Dispose();
-            context.Dispose();
-            renderForm.Dispose();
+            // Clean up Veldrid resources
+            _gd.WaitForIdle();
+            _controller.Dispose();
+            _cl.Dispose();
+            _gd.Dispose();
+
+            GC.SuppressFinalize(this);
         }
     }
 } 

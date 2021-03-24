@@ -1,5 +1,4 @@
 ﻿using HernoEditor.Properties;
-using SharpDX.Windows;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -10,18 +9,16 @@ namespace HernoEditor
 {
     class Splash : IDisposable
     {
-        private RenderForm form;
-
         private const int Width = 500;
         private const int Height = 300;
         private Stopwatch watch;
+        private System.Windows.Forms.Form form;
 
         public Splash()
         {
-            form = new RenderForm("Herno Editor™");
+            form = new System.Windows.Forms.Form();
             form.ClientSize = new Size(Width, Height);
             form.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
-            form.AllowUserResizing = false;
             form.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             form.TopMost = true;
@@ -31,7 +28,6 @@ namespace HernoEditor
         public void Run()
         {
             watch.Start();
-
 
             var pb = new System.Windows.Forms.PictureBox();
             pb.Image = Image.FromStream(new MemoryStream(Resources.Herno_PNG));
@@ -55,18 +51,17 @@ namespace HernoEditor
             form.TransparencyKey = Color.Black;
             form.AllowTransparency = true;
 
-
-            RenderLoop.Run(form, RenderCallback);
-        }
-
-        private void RenderCallback()
-        {
-            if (watch.ElapsedMilliseconds >= 5000)
+            form.Paint += (a, b) =>
             {
-                form.Close();
-                Dispose();
-            }
+                if (watch.ElapsedMilliseconds >= 5000)
+                {
+                    form.Close();
+                    Dispose();
+                }
+            };
         }
+
+       
 
         public void Dispose()
         {
