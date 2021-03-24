@@ -12,6 +12,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Shaders\DefaultShader.shader" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="ImGui.NET">
       <HintPath>..\..\ImGui.Net\bin\Debug\ImGui.NET\netstandard2.0\ImGui.NET.dll</HintPath>
     </Reference>
@@ -30,6 +34,7 @@
     <PackageReference Include="SharpDX.D3DCompiler" Version="4.2.0" />
     <PackageReference Include="SharpDX.Desktop" Version="4.2.0" />
     <PackageReference Include="SharpDX.Direct3D11" Version="4.2.0" />
+    <PackageReference Include="SharpDX.Direct3D9" Version="4.2.0" />
     <PackageReference Include="SharpDX.Mathematics" Version="4.2.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0-preview.2.21154.6" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0-preview.2.21154.6" />
@@ -51,6 +56,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="cimgui.dylib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="cimgui.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="cimgui.win-x64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="cimgui.win-x86.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="desc\cimgui.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -62,6 +79,9 @@
     </None>
     <None Update="desc\cimgui.win-x86.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Shaders\DefaultShader.shader">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Herno.png">
       <Pack>True</Pack>

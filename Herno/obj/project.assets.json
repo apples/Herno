@@ -326,6 +326,19 @@
           "lib/netstandard1.1/SharpDX.Direct3D11.dll": {}
         }
       },
+      "SharpDX.Direct3D9/4.2.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "SharpDX": "4.2.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/SharpDX.Direct3D9.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/SharpDX.Direct3D9.dll": {}
+        }
+      },
       "SharpDX.DXGI/4.2.0": {
         "type": "package",
         "dependencies": {
@@ -1849,6 +1862,26 @@
         "lib/uap10.0/SharpDX.Direct3D11.xml",
         "sharpdx.direct3d11.4.2.0.nupkg.sha512",
         "sharpdx.direct3d11.nuspec"
+      ]
+    },
+    "SharpDX.Direct3D9/4.2.0": {
+      "sha512": "1KgqXvPj/j5hLYxfcOQoJdHskamu7EWg60n9LBAYhun7dR+sKS0ZDNb7NuKwFP1bM0HZqvokjXQIf3oA2NpdqA==",
+      "type": "package",
+      "path": "sharpdx.direct3d9/4.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/SharpDX.Direct3D9.dll",
+        "lib/net40/SharpDX.Direct3D9.pdb",
+        "lib/net40/SharpDX.Direct3D9.xml",
+        "lib/net45/SharpDX.Direct3D9.dll",
+        "lib/net45/SharpDX.Direct3D9.pdb",
+        "lib/net45/SharpDX.Direct3D9.xml",
+        "lib/netstandard1.3/SharpDX.Direct3D9.dll",
+        "lib/netstandard1.3/SharpDX.Direct3D9.pdb",
+        "lib/netstandard1.3/SharpDX.Direct3D9.xml",
+        "sharpdx.direct3d9.4.2.0.nupkg.sha512",
+        "sharpdx.direct3d9.nuspec"
       ]
     },
     "SharpDX.DXGI/4.2.0": {
@@ -5119,6 +5152,7 @@
       "SharpDX.D3DCompiler >= 4.2.0",
       "SharpDX.Desktop >= 4.2.0",
       "SharpDX.Direct3D11 >= 4.2.0",
+      "SharpDX.Direct3D9 >= 4.2.0",
       "SharpDX.Mathematics >= 4.2.0",
       "System.Configuration.ConfigurationManager >= 6.0.0-preview.2.21154.6",
       "System.Drawing.Common >= 6.0.0-preview.2.21154.6"
@@ -5180,6 +5214,10 @@
             "version": "[4.2.0, )"
           },
           "SharpDX.Direct3D11": {
+            "target": "Package",
+            "version": "[4.2.0, )"
+          },
+          "SharpDX.Direct3D9": {
             "target": "Package",
             "version": "[4.2.0, )"
           },

@@ -47,3 +47,8 @@ E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\Accessibility.dll
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\SharpDX.Direct3D11.dll
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\SharpDX.Mathematics.dll
+E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\Resources\Shaders\DefaultShader.shader
+E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\cimgui.dylib
+E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\cimgui.so
+E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\cimgui.win-x64.dll
+E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\cimgui.win-x86.dll
