@@ -1,0 +1,9 @@
+E:\Documents\GitPro\Herno\ImGui.NET\bin\Debug\netstandard2.0\ImGui.NET.deps.json
+E:\Documents\GitPro\Herno\ImGui.NET\bin\Debug\netstandard2.0\ImGui.NET.dll
+E:\Documents\GitPro\Herno\ImGui.NET\bin\Debug\netstandard2.0\ImGui.NET.pdb
+E:\Documents\GitPro\Herno\ImGui.NET\obj\Debug\netstandard2.0\ImGui.NET.AssemblyInfoInputs.cache
+E:\Documents\GitPro\Herno\ImGui.NET\obj\Debug\netstandard2.0\ImGui.NET.AssemblyInfo.cs
+E:\Documents\GitPro\Herno\ImGui.NET\obj\Debug\netstandard2.0\ImGui.NET.csproj.CoreCompileInputs.cache
+E:\Documents\GitPro\Herno\ImGui.NET\obj\Debug\netstandard2.0\ImGui.NET.dll
+E:\Documents\GitPro\Herno\ImGui.NET\obj\Debug\netstandard2.0\ImGui.NET.pdb
+E:\Documents\GitPro\Herno\ImGui.NET\obj\Debug\netstandard2.0\ImGui.NET.csprojAssemblyReference.cache

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WwN6RIaWIRJ7AB3gjbqFRk5IRLBos3n8MDO9R7cWsU3KeLOkUH/B/bBoi8+mSh6XLTCSgV20STIAVSQND0FBdA==",
+  "dgSpecHash": "myDQyUNdwP8G8RkGaaRbL0idvpTkOh8re2uungAcdyh4HqrA7AmQpKnv5iHGbw1lAj5i46SdH0wdzzOqmOOZGw==",
   "success": true,
   "projectFilePath": "E:\\Documents\\GitPro\\Herno\\Herno\\HernoEditor.csproj",
   "expectedPackageFiles": [
@@ -17,14 +17,13 @@
     "C:\\Users\\Thal\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\1.0.5\\microsoft.netcore.dotnethostpolicy.1.0.5.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\1.0.1\\microsoft.netcore.dotnethostresolver.1.0.1.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\microsoft.netcore.jit\\1.0.7\\microsoft.netcore.jit.1.0.7.nupkg.sha512",
-    "C:\\Users\\Thal\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\Thal\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\microsoft.netcore.runtime.coreclr\\1.0.7\\microsoft.netcore.runtime.coreclr.1.0.7.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\microsoft.netcore.windows.apisets\\1.0.1\\microsoft.netcore.windows.apisets.1.0.1.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\microsoft.visualbasic\\10.0.1\\microsoft.visualbasic.10.0.1.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\microsoft.win32.registry\\4.0.0\\microsoft.win32.registry.4.0.0.nupkg.sha512",
-    "C:\\Users\\Thal\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\nativelibraryloader\\1.0.10\\nativelibraryloader.1.0.10.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
@@ -65,7 +64,6 @@
     "C:\\Users\\Thal\\.nuget\\packages\\system.diagnostics.stacktrace\\4.0.1\\system.diagnostics.stacktrace.4.0.1.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\system.diagnostics.tracing\\4.3.0\\system.diagnostics.tracing.4.3.0.nupkg.sha512",
-    "C:\\Users\\Thal\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\system.dynamic.runtime\\4.0.11\\system.dynamic.runtime.4.0.11.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\system.globalization.calendars\\4.3.0\\system.globalization.calendars.4.3.0.nupkg.sha512",
@@ -139,12 +137,12 @@
     "C:\\Users\\Thal\\.nuget\\packages\\system.xml.xmldocument\\4.0.1\\system.xml.xmldocument.4.0.1.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\system.xml.xpath\\4.0.1\\system.xml.xpath.4.0.1.nupkg.sha512",
     "C:\\Users\\Thal\\.nuget\\packages\\system.xml.xpath.xdocument\\4.0.1\\system.xml.xpath.xdocument.4.0.1.nupkg.sha512",
-    "C:\\Users\\Thal\\.nuget\\packages\\veldrid\\4.8.0\\veldrid.4.8.0.nupkg.sha512",
-    "C:\\Users\\Thal\\.nuget\\packages\\veldrid.metalbindings\\4.8.0\\veldrid.metalbindings.4.8.0.nupkg.sha512",
-    "C:\\Users\\Thal\\.nuget\\packages\\veldrid.openglbindings\\4.8.0\\veldrid.openglbindings.4.8.0.nupkg.sha512",
-    "C:\\Users\\Thal\\.nuget\\packages\\veldrid.sdl2\\4.8.0\\veldrid.sdl2.4.8.0.nupkg.sha512",
-    "C:\\Users\\Thal\\.nuget\\packages\\veldrid.startuputilities\\4.8.0\\veldrid.startuputilities.4.8.0.nupkg.sha512",
-    "C:\\Users\\Thal\\.nuget\\packages\\vk\\1.0.22\\vk.1.0.22.nupkg.sha512"
+    "C:\\Users\\Thal\\.nuget\\packages\\veldrid\\4.5.0\\veldrid.4.5.0.nupkg.sha512",
+    "C:\\Users\\Thal\\.nuget\\packages\\veldrid.metalbindings\\4.5.0\\veldrid.metalbindings.4.5.0.nupkg.sha512",
+    "C:\\Users\\Thal\\.nuget\\packages\\veldrid.openglbindings\\4.5.0\\veldrid.openglbindings.4.5.0.nupkg.sha512",
+    "C:\\Users\\Thal\\.nuget\\packages\\veldrid.sdl2\\4.5.0\\veldrid.sdl2.4.5.0.nupkg.sha512",
+    "C:\\Users\\Thal\\.nuget\\packages\\veldrid.startuputilities\\4.5.0\\veldrid.startuputilities.4.5.0.nupkg.sha512",
+    "C:\\Users\\Thal\\.nuget\\packages\\vk\\1.0.21\\vk.1.0.21.nupkg.sha512"
   ],
   "logs": []
 }

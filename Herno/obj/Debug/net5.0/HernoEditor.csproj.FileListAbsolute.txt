@@ -5,16 +5,10 @@ E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\HernoEditor.runtimeconfig.dev.j
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\HernoEditor.dll
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\ref\HernoEditor.dll
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\HernoEditor.pdb
-E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\Microsoft.Win32.SystemEvents.dll
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\SharpDX.dll
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\SharpDX.D3DCompiler.dll
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\SharpDX.DXGI.dll
-E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\System.Drawing.Common.dll
-E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\ImGui.NET.dll
-E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\System.Windows.Forms.dll
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\ImGui.NET.pdb
 E:\Documents\GitPro\Herno\Herno\obj\Debug\net5.0\HernoEditor.Properties.Resources.resources
 E:\Documents\GitPro\Herno\Herno\obj\Debug\net5.0\HernoEditor.csproj.GenerateResource.cache
@@ -53,6 +47,7 @@ E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\runtimes\win7-x86\native\libuv.
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\runtimes\osx-x64\native\libsdl2.dylib
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\runtimes\win-x64\native\SDL2.dll
 E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\runtimes\win-x86\native\SDL2.dll
-E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\deps\cimgui\win-x64\cimgui.dll
-E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\deps\cimgui\osx-x64\cimgui.dylib
-E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\deps\cimgui\linux-x64\cimgui.so
+E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\cimgui.dylib
+E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\cimgui.so
+E:\Documents\GitPro\Herno\Herno\bin\Debug\net5.0\cimgui.dll
+E:\Documents\GitPro\Herno\Herno\obj\Debug\net5.0\HernoEditor.csprojAssemblyReference.cache

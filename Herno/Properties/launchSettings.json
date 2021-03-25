@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HernoEditor": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

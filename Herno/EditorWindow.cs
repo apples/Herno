@@ -1,7 +1,8 @@
-﻿using System;
+﻿using ImGuiNET;
+using System;
 using System.Linq;
 using System.Numerics;
-using ImGuiNET;
+using System.Reflection;
 using Veldrid;
 using Veldrid.Sdl2;
 using Veldrid.StartupUtilities;
@@ -9,6 +10,7 @@ using static ImGuiNET.ImGuiNative;
 
 namespace HernoEditor
 {
+    using ImGui = ImGuiNET.ImGui;
     class EditorWindow : IDisposable
     {
         private static Sdl2Window _window;
@@ -22,7 +24,7 @@ namespace HernoEditor
         private static int _counter = 0;
         private static int _dragInt = 0;
         private static Vector3 _clearColor = new Vector3(0.45f, 0.55f, 0.6f);
-        private static bool _showImGuiDemoWindow = true;
+        private static bool _showDemoWindow = true;
         private static bool _showAnotherWindow = false;
         private static bool _showMemoryEditor = false;
         private static byte[] _memoryEditorData;
@@ -38,8 +40,9 @@ namespace HernoEditor
         {
             // Create window, GraphicsDevice, and all resources necessary for the demo.
             VeldridStartup.CreateWindowAndGraphicsDevice(
-                new WindowCreateInfo(50, 50, 1280, 720, WindowState.Normal, "ImGui.NET Sample Program"),
-                new GraphicsDeviceOptions(true, null, true, ResourceBindingModel.Improved, true, true),
+                new WindowCreateInfo(50, 50, 1280, 720, WindowState.Normal, $"{Assembly.GetExecutingAssembly().GetName().Name}"),
+                new GraphicsDeviceOptions(true, null, true),
+                GraphicsBackend.Vulkan,
                 out _window,
                 out _gd);
             _window.Resized += () =>
@@ -48,7 +51,7 @@ namespace HernoEditor
                 _controller.WindowResized(_window.Width, _window.Height);
             };
             _cl = _gd.ResourceFactory.CreateCommandList();
-            _controller = new ImGuiController(_gd, _gd.MainSwapchain.Framebuffer.OutputDescription, _window.Width, _window.Height);
+            _controller = new ImGuiController(_gd, _window, _gd.MainSwapchain.Framebuffer.OutputDescription, _window.Width, _window.Height);
             _memoryEditor = new MemoryEditor();
             Random random = new Random();
             _memoryEditorData = Enumerable.Range(0, 1024).Select(i => (byte)random.Next(255)).ToArray();
@@ -74,6 +77,7 @@ namespace HernoEditor
                 _cl.End();
                 _gd.SubmitCommands(_cl);
                 _gd.SwapBuffers(_gd.MainSwapchain);
+                _controller.SwapExtraWindows(_gd);
             }
         }
 
@@ -90,8 +94,9 @@ namespace HernoEditor
                 //ImGui.ColorEdit3("clear color", ref _clearColor);                   // Edit 3 floats representing a color
 
                 ImGui.Text($"Mouse position: {ImGui.GetMousePos()}");
+                ImGui.Text($"Mouse down: {ImGui.GetIO().MouseDown[0]}");
 
-                ImGui.Checkbox("ImGui Demo Window", ref _showImGuiDemoWindow);                 // Edit bools storing our windows open/close state
+                ImGui.Checkbox("Demo Window", ref _showDemoWindow);                 // Edit bools storing our windows open/close state
                 ImGui.Checkbox("Another Window", ref _showAnotherWindow);
                 ImGui.Checkbox("Memory Editor", ref _showMemoryEditor);
                 if (ImGui.Button("Button"))                                         // Buttons return true when clicked (NB: most widgets return true when edited/activated)
@@ -116,12 +121,12 @@ namespace HernoEditor
             }
 
             // 3. Show the ImGui demo window. Most of the sample code is in ImGui.ShowDemoWindow(). Read its code to learn more about Dear ImGui!
-            if (_showImGuiDemoWindow)
+            if (_showDemoWindow)
             {
                 // Normally user code doesn't need/want to call this because positions are saved in .ini file anyway.
                 // Here we just want to make the demo initial state a bit more friendly!
                 ImGui.SetNextWindowPos(new Vector2(650, 20), ImGuiCond.FirstUseEver);
-                ImGui.ShowDemoWindow(ref _showImGuiDemoWindow);
+                ImGui.ShowDemoWindow(ref _showDemoWindow);
             }
 
             if (ImGui.TreeNode("Tabs"))
@@ -201,7 +206,7 @@ namespace HernoEditor
                 _memoryEditor.Draw("Memory Editor", _memoryEditorData, _memoryEditorData.Length);
             }
         }
-   
+
 
         public void Dispose()
         {

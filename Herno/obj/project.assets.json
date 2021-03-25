@@ -254,7 +254,7 @@
       "Microsoft.NETCore.Jit/1.0.7": {
         "type": "package"
       },
-      "Microsoft.NETCore.Platforms/5.0.0": {
+      "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -341,24 +341,6 @@
             "rid": "unix"
           },
           "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
-      "Microsoft.Win32.SystemEvents/5.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "5.0.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -960,28 +942,6 @@
         },
         "compile": {
           "ref/netstandard1.5/System.Diagnostics.Tracing.dll": {}
-        }
-      },
-      "System.Drawing.Common/5.0.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Win32.SystemEvents": "5.0.0"
-        },
-        "compile": {
-          "ref/netcoreapp3.0/System.Drawing.Common.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/System.Drawing.Common.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
-          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
         }
       },
       "System.Dynamic.Runtime/4.0.11": {
@@ -2427,7 +2387,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Veldrid/4.8.0": {
+      "Veldrid/4.5.0": {
         "type": "package",
         "dependencies": {
           "NativeLibraryLoader": "1.0.10",
@@ -2438,9 +2398,9 @@
           "System.Buffers": "4.4.0",
           "System.Numerics.Vectors": "4.4.0",
           "System.Runtime.CompilerServices.Unsafe": "4.4.0",
-          "Veldrid.MetalBindings": "4.8.0",
-          "Veldrid.OpenGLBindings": "4.8.0",
-          "Vk": "1.0.22"
+          "Veldrid.MetalBindings": "4.5.0",
+          "Veldrid.OpenGLBindings": "4.5.0",
+          "Vk": "1.0.21"
         },
         "compile": {
           "lib/netstandard2.0/Veldrid.dll": {}
@@ -2449,7 +2409,7 @@
           "lib/netstandard2.0/Veldrid.dll": {}
         }
       },
-      "Veldrid.MetalBindings/4.8.0": {
+      "Veldrid.MetalBindings/4.5.0": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "4.4.0"
@@ -2461,7 +2421,7 @@
           "lib/netstandard2.0/Veldrid.MetalBindings.dll": {}
         }
       },
-      "Veldrid.OpenGLBindings/4.8.0": {
+      "Veldrid.OpenGLBindings/4.5.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Veldrid.OpenGLBindings.dll": {}
@@ -2470,7 +2430,7 @@
           "lib/netstandard2.0/Veldrid.OpenGLBindings.dll": {}
         }
       },
-      "Veldrid.SDL2/4.8.0": {
+      "Veldrid.SDL2/4.5.0": {
         "type": "package",
         "dependencies": {
           "NativeLibraryLoader": "1.0.10",
@@ -2498,11 +2458,11 @@
           }
         }
       },
-      "Veldrid.StartupUtilities/4.8.0": {
+      "Veldrid.StartupUtilities/4.5.0": {
         "type": "package",
         "dependencies": {
-          "Veldrid": "4.8.0",
-          "Veldrid.SDL2": "4.8.0"
+          "Veldrid": "4.5.0",
+          "Veldrid.SDL2": "4.5.0"
         },
         "compile": {
           "lib/netstandard2.0/Veldrid.StartupUtilities.dll": {}
@@ -2511,7 +2471,7 @@
           "lib/netstandard2.0/Veldrid.StartupUtilities.dll": {}
         }
       },
-      "Vk/1.0.22": {
+      "Vk/1.0.21": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -2521,6 +2481,21 @@
         },
         "runtime": {
           "lib/netstandard1.4/vk.dll": {}
+        }
+      },
+      "ImGui.NET/1.78.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "System.Buffers": "4.4.0",
+          "System.Numerics.Vectors": "4.4.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.4.0"
+        },
+        "compile": {
+          "bin/placeholder/ImGui.NET.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ImGui.NET.dll": {}
         }
       }
     }
@@ -2779,22 +2754,19 @@
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.Platforms/5.0.0": {
-      "sha512": "VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/5.0.0",
+      "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+        "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
-        "runtime.json",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "runtime.json"
       ]
     },
     "Microsoft.NETCore.Runtime.CoreCLR/1.0.7": {
@@ -2951,34 +2923,6 @@
         "runtimes/win/lib/net46/Microsoft.Win32.Registry.dll",
         "runtimes/win/lib/netcore50/_._",
         "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll"
-      ]
-    },
-    "Microsoft.Win32.SystemEvents/5.0.0": {
-      "sha512": "Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
-      "type": "package",
-      "path": "microsoft.win32.systemevents/5.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/Microsoft.Win32.SystemEvents.dll",
-        "lib/net461/Microsoft.Win32.SystemEvents.xml",
-        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
-        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
-        "microsoft.win32.systemevents.5.0.0.nupkg.sha512",
-        "microsoft.win32.systemevents.nuspec",
-        "ref/net461/Microsoft.Win32.SystemEvents.dll",
-        "ref/net461/Microsoft.Win32.SystemEvents.xml",
-        "ref/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
-        "ref/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
-        "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll",
-        "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.xml",
-        "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll",
-        "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.xml",
-        "useSharedDesignerContext.txt",
-        "version.txt"
       ]
     },
     "NativeLibraryLoader/1.0.10": {
@@ -4156,48 +4100,6 @@
         "ref/xamarinwatchos10/_._",
         "system.diagnostics.tracing.4.3.0.nupkg.sha512",
         "system.diagnostics.tracing.nuspec"
-      ]
-    },
-    "System.Drawing.Common/5.0.2": {
-      "sha512": "rvr/M1WPf24ljpvvrVd74+NdjRUJu1bBkspkZcnzSZnmAUQWSvanlQ0k/hVHk+cHufZbZfu7vOh/vYc0q5Uu/A==",
-      "type": "package",
-      "path": "system.drawing.common/5.0.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.Drawing.Common.dll",
-        "lib/netcoreapp3.0/System.Drawing.Common.dll",
-        "lib/netcoreapp3.0/System.Drawing.Common.xml",
-        "lib/netstandard2.0/System.Drawing.Common.dll",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net461/System.Drawing.Common.dll",
-        "ref/netcoreapp3.0/System.Drawing.Common.dll",
-        "ref/netcoreapp3.0/System.Drawing.Common.xml",
-        "ref/netstandard2.0/System.Drawing.Common.dll",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll",
-        "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll",
-        "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.xml",
-        "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll",
-        "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll",
-        "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.xml",
-        "system.drawing.common.5.0.2.nupkg.sha512",
-        "system.drawing.common.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
       ]
     },
     "System.Dynamic.Runtime/4.0.11": {
@@ -7902,50 +7804,50 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "Veldrid/4.8.0": {
-      "sha512": "zBYuN8yf60zH9nIkIwmIXMgsCe8SboUzVBbYiczvmW2mmeZ9DeMJOEwu+1KORU1BCot1e7Yn8YCQpeIil3p4sQ==",
+    "Veldrid/4.5.0": {
+      "sha512": "NGXEzPoqYnrQOy5XkWxfmZiZX6xIYcy8ln3MUDbSEWpEMIMdxCh7uzLYKKTE/v9Z9EKaPKk4fnUi5b3pg8VdnQ==",
       "type": "package",
-      "path": "veldrid/4.8.0",
+      "path": "veldrid/4.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Veldrid.dll",
         "lib/netstandard2.0/Veldrid.pdb",
         "lib/netstandard2.0/Veldrid.xml",
-        "veldrid.4.8.0.nupkg.sha512",
+        "veldrid.4.5.0.nupkg.sha512",
         "veldrid.nuspec"
       ]
     },
-    "Veldrid.MetalBindings/4.8.0": {
-      "sha512": "7pQ4lrsQB2+oOXuVp91+MHv0qAivIOInK9x/hYEoe24HygIn7Z5pX7FPxFolnE8c5TNh3lj6HBD17sJ12rVKsQ==",
+    "Veldrid.MetalBindings/4.5.0": {
+      "sha512": "AYusoT8Wq/QcD9zwdwbuOirjFtGuUDd5XJ7I1UjzuKS6+HKJf1O1gUxzJJSIUpBHxTuER7tTDxOHOfa8OjI/PA==",
       "type": "package",
-      "path": "veldrid.metalbindings/4.8.0",
+      "path": "veldrid.metalbindings/4.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Veldrid.MetalBindings.dll",
         "lib/netstandard2.0/Veldrid.MetalBindings.pdb",
-        "veldrid.metalbindings.4.8.0.nupkg.sha512",
+        "veldrid.metalbindings.4.5.0.nupkg.sha512",
         "veldrid.metalbindings.nuspec"
       ]
     },
-    "Veldrid.OpenGLBindings/4.8.0": {
-      "sha512": "N0Ux7YlzN/FhhiRqWsqNipGkg15bf+0/OKa322P6mgHf5Soh+eE2bfEAHJPNMgxpuCjSauvaX0ZToTA8AcDgqA==",
+    "Veldrid.OpenGLBindings/4.5.0": {
+      "sha512": "9UZXBLx3mIZr9Fh1/5jJHtddrKdkg3U7AnrNdnnHGqCKJRQdPIHLkxGXvKHP5nmHY0VMewv2HAxae949/CYsbQ==",
       "type": "package",
-      "path": "veldrid.openglbindings/4.8.0",
+      "path": "veldrid.openglbindings/4.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Veldrid.OpenGLBindings.dll",
         "lib/netstandard2.0/Veldrid.OpenGLBindings.pdb",
-        "veldrid.openglbindings.4.8.0.nupkg.sha512",
+        "veldrid.openglbindings.4.5.0.nupkg.sha512",
         "veldrid.openglbindings.nuspec"
       ]
     },
-    "Veldrid.SDL2/4.8.0": {
-      "sha512": "/4XxTpDYdtDhr+aPwlZwCOKUS3ZKaKs4X95glcyFmAo9hEodwpQGsJP9zpJyzIMmF5h4puCwFxDL4Rx1xbYxlQ==",
+    "Veldrid.SDL2/4.5.0": {
+      "sha512": "pAzTlbg0jb32nUPDv3HLBgWWG5AUXX5YFoN5qrPtJP5Cr4PafrF67p5rrtb84TdFtCgCYpunCHXtyqqUwYjiIg==",
       "type": "package",
-      "path": "veldrid.sdl2/4.8.0",
+      "path": "veldrid.sdl2/4.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7956,41 +7858,46 @@
         "runtimes/osx-x64/native/libsdl2.dylib",
         "runtimes/win-x64/native/SDL2.dll",
         "runtimes/win-x86/native/SDL2.dll",
-        "veldrid.sdl2.4.8.0.nupkg.sha512",
+        "veldrid.sdl2.4.5.0.nupkg.sha512",
         "veldrid.sdl2.nuspec"
       ]
     },
-    "Veldrid.StartupUtilities/4.8.0": {
-      "sha512": "NFTUv+BtkWZQY7d2Pdmw5ZUSkzZAS+qh3aIRjw4uj7hvTAlTO6fFxnDvn/Wpm9sHLdc6b9gmEEKHPKO3naM7mw==",
+    "Veldrid.StartupUtilities/4.5.0": {
+      "sha512": "g1tyIT43s6zbmrsXgnuPdEsT0SVdsod/RXuWPedhdodfR3tXTYyBnQWkNmtuvRy1ztW8ZGC4rD7vCREHoVYbFg==",
       "type": "package",
-      "path": "veldrid.startuputilities/4.8.0",
+      "path": "veldrid.startuputilities/4.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Veldrid.StartupUtilities.dll",
         "lib/netstandard2.0/Veldrid.StartupUtilities.pdb",
-        "veldrid.startuputilities.4.8.0.nupkg.sha512",
+        "veldrid.startuputilities.4.5.0.nupkg.sha512",
         "veldrid.startuputilities.nuspec"
       ]
     },
-    "Vk/1.0.22": {
-      "sha512": "sVfG2tYyu4k5vkAsn3FcqqW+EL3G0eyLDUsDmMUXuf2puNnhr3z1iA5H0DOzUiYfzRwAeEmPcZNp4pqv8uTvhg==",
+    "Vk/1.0.21": {
+      "sha512": "xQzA5v2cLS+8If5bfDwmUkq58Vet2Ef8Fy0oIwPSwB7spErnKSMTzTGctH7ETA+bAituxi9nsvFUflfYnykqSQ==",
       "type": "package",
-      "path": "vk/1.0.22",
+      "path": "vk/1.0.21",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard1.4/vk.dll",
-        "vk.1.0.22.nupkg.sha512",
+        "vk.1.0.21.nupkg.sha512",
         "vk.nuspec"
       ]
+    },
+    "ImGui.NET/1.78.0": {
+      "type": "project",
+      "path": "../ImGui.NET/ImGui.NET.csproj",
+      "msbuildProject": "../ImGui.NET/ImGui.NET.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "System.Drawing.Common >= 5.0.2",
-      "Veldrid >= 4.8.0",
-      "Veldrid.StartupUtilities >= 4.8.0"
+      "ImGui.NET >= 1.78.0",
+      "Veldrid >= 4.5.0",
+      "Veldrid.StartupUtilities >= 4.5.0"
     ]
   },
   "packageFolders": {
@@ -8019,7 +7926,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\Documents\\GitPro\\Herno\\ImGui.NET\\ImGui.NET.csproj": {
+              "projectPath": "E:\\Documents\\GitPro\\Herno\\ImGui.NET\\ImGui.NET.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -8032,17 +7943,13 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
-          "System.Drawing.Common": {
-            "target": "Package",
-            "version": "[5.0.2, )"
-          },
           "Veldrid": {
             "target": "Package",
-            "version": "[4.8.0, )"
+            "version": "[4.5.0, )"
           },
           "Veldrid.StartupUtilities": {
             "target": "Package",
-            "version": "[4.8.0, )"
+            "version": "[4.5.0, )"
           }
         },
         "imports": [
