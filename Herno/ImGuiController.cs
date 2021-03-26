@@ -85,7 +85,7 @@ namespace HernoEditor
             io.ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;
 
             ImGuiPlatformIOPtr platformIO = ImGui.GetPlatformIO();
-            ImGuiViewportPtr mainViewport = platformIO.MainViewport;
+            ImGuiViewportPtr mainViewport = ImGui.GetMainViewport();
             mainViewport.PlatformHandle = window.Handle;
             _mainViewportWindow = new VeldridImGuiWindow(gd, mainViewport, _window);
 
@@ -497,8 +497,8 @@ namespace HernoEditor
             _frameBegun = true;
             ImGui.NewFrame();
 
-            ImGui.Text($"Main viewport Position: {ImGui.GetPlatformIO().MainViewport.Pos}");
-            ImGui.Text($"Main viewport Size: {ImGui.GetPlatformIO().MainViewport.Size}");
+            ImGui.Text($"Main viewport Position: {ImGui.GetMainViewport().Pos}");
+            ImGui.Text($"Main viewport Size: {ImGui.GetMainViewport().Size}");
             ImGui.Text($"MoouseHoveredViewport: {ImGui.GetIO().MouseHoveredViewport}");
         }
 
@@ -544,8 +544,8 @@ namespace HernoEditor
             io.DisplayFramebufferScale = _scaleFactor;
             io.DeltaTime = deltaSeconds; // DeltaTime is in seconds.
 
-            ImGui.GetPlatformIO().MainViewport.Pos = new Vector2(_window.X, _window.Y);
-            ImGui.GetPlatformIO().MainViewport.Size = new Vector2(_window.Width, _window.Height);
+            ImGui.GetMainViewport().Pos = new Vector2(_window.X, _window.Y);
+            ImGui.GetMainViewport().Size = new Vector2(_window.Width, _window.Height);
         }
 
         private void UpdateImGuiInput(InputSnapshot snapshot)
