@@ -16,7 +16,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\ImGui.NET\ImGui.NET.csproj" />
 		<PackageReference Include="Veldrid" Version="4.5.0" />
 		<PackageReference Include="Veldrid.StartupUtilities" Version="4.5.0" />
 	</ItemGroup>
@@ -33,9 +32,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="cimgui.dll" CopyToOutputDirectory="PreserveNewest" />
-		<Content Include="cimgui.dylib" CopyToOutputDirectory="PreserveNewest" />
-		<Content Include="cimgui.so" CopyToOutputDirectory="PreserveNewest" />
+	  <ProjectReference Include="..\ImGui.NET\src\ImGui.NET\ImGui.NET.csproj" />
 	</ItemGroup>
 
 </Project>

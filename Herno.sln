@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HernoEditor", "Herno\HernoEditor.csproj", "{A0F047B6-E2FE-4150-9593-81371DE9E8BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HernoEditor", "Herno\HernoEditor.csproj", "{A0F047B6-E2FE-4150-9593-81371DE9E8BF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImGui.NET", "ImGui.NET\ImGui.NET.csproj", "{9579D081-8E1F-4FF0-8BE9-7C789F2D413D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImGui.NET", "ImGui.NET\src\ImGui.NET\ImGui.NET.csproj", "{1A268031-245D-41CA-B4F4-A340C5C2CA93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{A0F047B6-E2FE-4150-9593-81371DE9E8BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0F047B6-E2FE-4150-9593-81371DE9E8BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0F047B6-E2FE-4150-9593-81371DE9E8BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9579D081-8E1F-4FF0-8BE9-7C789F2D413D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9579D081-8E1F-4FF0-8BE9-7C789F2D413D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9579D081-8E1F-4FF0-8BE9-7C789F2D413D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9579D081-8E1F-4FF0-8BE9-7C789F2D413D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A268031-245D-41CA-B4F4-A340C5C2CA93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A268031-245D-41CA-B4F4-A340C5C2CA93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A268031-245D-41CA-B4F4-A340C5C2CA93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A268031-245D-41CA-B4F4-A340C5C2CA93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
