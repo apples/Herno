@@ -41,7 +41,7 @@ namespace HernoEditor
             // Create window, GraphicsDevice, and all resources necessary for the demo.
             VeldridStartup.CreateWindowAndGraphicsDevice(
                 new WindowCreateInfo(50, 50, 1280, 720, WindowState.Normal, 
-		$"Herno Editor {DateTime.Now.Year}.{Assembly.GetExecutingAssembly().GetName().Version.MajorRevision}.f1"),
+		            $"Herno Editor {DateTime.Now.Year}.{Assembly.GetExecutingAssembly().GetName().Version.MajorRevision}.f1"),
                 new GraphicsDeviceOptions(true, null, true),
                 GraphicsBackend.Vulkan,
                 out _window,
